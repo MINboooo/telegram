@@ -9,18 +9,31 @@
         <% end %>
       </div>
       <div class="col-lg-4">
-        <div class="card-body scroll">
+        <%# <div class="card-body scroll">
           <%= simple_format (@post.caption) %>
+        <div class="card-body">
+          <% if @post.user.avatar.attached? %>
+            <%= image_tag @post.user.avatar.variant(resize_to_fill: [32, 32]).processed, class: "img-thumbnail rounded-circle" %>
+          <% else %>
+            <%= image_tag "no_image", class: "img-thumbnail rounded-circle" %>
+          <% end %>
+          <%= @post.user.name %>
+          <hr>
+          <div class="scroll">
+            <%= simple_format (@post.caption) %>
+          </div>          
         </div>
       </div>
     </div>
   </div>
+  <% if user_signed_in? && current_user.id == @post.user_id %>
   <p>
     <%= link_to "編集", edit_post_path(@post), class: "btn btn-block btn-primary" %>
   </p>
   <p>
     <%= button_tag "削除", class: "btn btn-block btn-warning", data: { toggle: "modal", target: "#delete-post" } %>
   </p>
+  <% end %>
 </div>
 
 <%= render "delete_modal" , post: @post %>
