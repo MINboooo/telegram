@@ -15,7 +15,15 @@
     <form class="nav-item form-inline mb-2 mb-lg-0" action="/" accept-charset="UTF-8" method="get">
       <input type="text" name="q" id="q" value="" class="form-control" placeholder="検索" >
     </form>
-    <a class="nav-item" href="/"><i class="far fa-user"></i></a>
+    <% if user_signed_in? %>
+      <%= link_to edit_user_registration_path, class: "nav-item" do %>
+        <i class="far fa-user"></i>
+      <% end %>
+    <% else %>
+      <%= link_to new_user_session_path, class: "nav-item" do %>
+        <i class="far fa-user"></i>
+      <% end %>
+    <% end %>
   </div>
 
 </nav>
