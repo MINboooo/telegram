@@ -1,17 +1,4 @@
 <div class="col-6 mx-auto">
-  <% @posts.each do |post| %>
-    <div class="card mb-5">
-      <%= link_to post do %>
-        <!-- image_magickのメソッドを使用して画像サイズを変更して表示 -->
-        <% if post.image.attached? %>
-          <%= image_tag post.image.variant(resize_to_fill: [800, 800]).processed, class: "card-img" %>
-        <% else %>
-          <%= image_tag "no_image", class: "card-img" %>
-        <% end %>
-      <% end %>
-      <div class="card-text">
-        <p><%= truncate(post.caption, length: 70) %></p>
-      </div>
-    </div>
-  <% end %>
+
+  <%= render @posts %>
 </div>
