@@ -1,9 +1,9 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_post, only: [ :show, :edit, :update, :destroy]
+  before_action :set_post, only: [ :edit, :update, :destroy]
   def index
     # @posts = Post.all
-    @posts = Post.order(created_at: :desc).page(params[:page]).per(5)
+    @posts = Post.with_attached_image.order(created_at: :desc).page(params[:page]).per(5).includes(user: [avatar_attachment: :blob], comments: [user: [avatar_attachment: :blob]])
     @comment = Comment.new
   end
 
@@ -26,6 +26,8 @@ class PostsController < ApplicationController
 
   def show
     # @post = Post.find(params[:id])
+
+    @post = Post.with_attached_image.includes(comments: [user: [ avatar_attachment: :blob ]], user: [ avatar_attachment: :blob ]).find(params[:id])
 
     @comment = Comment.new
     
