@@ -5,7 +5,8 @@ ja:
       post: 投稿する
     new:
       title: New Post
+    post:
+      submit: コメント
     show:
       edit: 編集する
       delete: 投稿削除
-      
