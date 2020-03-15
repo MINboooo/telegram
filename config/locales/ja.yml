@@ -1,6 +1,9 @@
 ja:
   activerecord:
     attributes:
+      admin_user:
+        email: メールアドレス
+        password: パスワード
       comment:
         body: コメント
       post:
