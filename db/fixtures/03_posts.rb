@@ -1,6 +1,6 @@
 unless Rails.env.production?
-  # 50件のデータを用意する
-  POST_MAX = 50
+  # 200件のデータを用意する
+  POST_MAX = 200
 
   # Proc.newでその後の配列をオブジェクトとしてpost_attrsに代入
   post_attrs = Proc.new do

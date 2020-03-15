@@ -1,11 +1,13 @@
 <div class="card mb-5">
   <div class="card-header bg-transparent">
-    <% if post.user.avatar.attached? %>
-      <%= image_tag post.user.avatar.variant(resize_to_fill: [32, 32]).processed, class: "img-fluid rounded-circle" %>
-    <% else %>
-      <%= image_tag "no_image", class: "img-fluid rounded-circle" %>
+    <%= link_to user_path(post.user) do %>
+      <% if post.user.avatar.attached? %>
+        <%= image_tag post.user.avatar.variant(resize_to_fill: [32, 32]).processed, class: "img-fluid rounded-circle" %>
+      <% else %>
+        <%= image_tag "no_image", class: "img-fluid rounded-circle" %>
+      <% end %>
+      <%= post.user.name %>
     <% end %>
-    <%= post.user.name %>
   </div>
   <%= link_to post do %>
     <!-- image_magickのメソッドを使用して画像サイズを変更して表示 -->
