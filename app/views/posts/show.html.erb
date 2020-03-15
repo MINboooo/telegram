@@ -8,7 +8,7 @@
           <%= image_tag "no_image", class: "card-img" %>
         <% end %>
       </div>
-      <div class="col-lg-4">
+      <div class="col-lg-5">
         <%# <div class="card-body scroll">
           <%= simple_format (@post.caption) %>
         <div class="card-body">
@@ -21,7 +21,23 @@
           <hr>
           <div class="scroll">
             <%= simple_format (@post.caption) %>
-          </div>          
+
+            <% @post.comments.each do |comment| %>
+              <p>
+                <%= image_tag comment.user.avatar.variant(resize_to_fill: [20, 20]).processed, class: "img-fluid rounded-circle" %>
+                <%= comment.user.name %>
+                <%= comment.body %>
+              </p>
+            <% end %>
+
+          </div>  
+
+          <%= form_with model: @comment, url: comments_path, class: "row mx-auto ", local: true do |f| %>
+            <%= f.hidden_field :post_id, value: @post.id %>
+            <%= f.text_field :body, class: "col-8 form-control" %>
+            <%= f.submit t(".submit"), class: "col-4" %>
+          <% end %>
+
         </div>
       </div>
     </div>
