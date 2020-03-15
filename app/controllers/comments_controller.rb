@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to posts_path, notice: "コメントを保存しました。"
     else
-      @posts = Post.find_newest_post(params[:page]).with_user_and_comment
+
       render template: "posts/index"
     end
   end
