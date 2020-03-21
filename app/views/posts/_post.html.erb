@@ -1,0 +1,43 @@
+<div class="card mb-5">
+  <div class="card-header bg-transparent">
+    <%= link_to user_path(post.user) do %>
+      <% if post.user.avatar.attached? %>
+        <%= image_tag post.user.avatar.variant(resize_to_fill: [32, 32]).processed, class: "img-fluid rounded-circle" %>
+      <% else %>
+        <%= image_tag "no_image", class: "img-fluid rounded-circle" %>
+      <% end %>
+      <%= post.user.name %>
+    <% end %>
+  </div>
+  <%= link_to post do %>
+    <!-- image_magickのメソッドを使用して画像サイズを変更して表示 -->
+    <% if post.image.attached? %>
+      <%= image_tag post.image.variant(resize_to_fill: [800, 800]).processed, class: "card-img" %>
+    <% else %>
+      <%= image_tag "no_image", class: "card-img" %>
+    <% end %>
+  <% end %>
+  <div class="card-text">
+    <p><%= truncate(post.caption, length: 70) %></p>
+
+    <hr>
+    
+    <% post.comments.last(3).each do |comment| %>
+      <p>
+        <%= image_tag comment.user.avatar.variant(resize_to_fill: [20, 20]).processed, class: "img-fluid rounded-circle" %>
+        <%= comment.user.name %>
+        <%= truncate(comment.body, length: 30) %>
+        <% if current_user.id == comment.user.id %>
+          <%= link_to t(".delete"), comment_path(comment), method: :delete, data: {confirm: '削除してよろしいですか？'} %>
+        <% end %>
+      </p>
+    <% end %>
+
+    <%= form_with model: @comment, url: comments_path, class: "form-group row mx-auto ", local: true do |f| %>
+      <%= f.hidden_field :post_id, value: post.id %>
+      <%= f.text_field :body, class: "col-8 form-control" %>
+      <%= f.submit t(".submit"), class: "col-4" %>
+    <% end %>
+
+  </div>
+</div>

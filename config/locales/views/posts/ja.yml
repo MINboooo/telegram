@@ -1,0 +1,14 @@
+ja:
+  posts:
+    form:
+      back: 戻る
+      post: 投稿する
+    new:
+      title: New Post
+    post:
+      delete: 削除
+      submit: コメント
+    show:
+      edit: 編集する
+      delete: 投稿削除
+      submit: コメント

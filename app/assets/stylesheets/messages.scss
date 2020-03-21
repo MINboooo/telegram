@@ -1,0 +1,122 @@
+// Place all the styles related to the messages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.message {
+  margin-top: 70px;
+  margin-bottom: 80px;
+  .message-user-name {
+    text-align: center;
+    background-color: #40454E;
+    color: white;
+    padding: 20px;
+  }
+}
+
+.message-index {
+  background-color: #E1EFFA;
+  padding: 0;
+}
+
+.message-field {
+  padding-top: 20px;
+  background-color: white;
+}
+
+.segment {
+  padding: 20px;
+}
+
+.input-mysize-message {
+  width: 100%;
+  height: 300px !important;
+}
+
+.item-right {
+  text-align: right;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.item-left {
+  text-align: left;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  p {
+    padding-left: 410px;
+  }
+}
+
+
+.clear {
+  clear:both;
+}
+
+
+div#balloon{
+    background: #fff;
+    dispay: inline-block;
+    position: relative;
+    width: 500px;
+    height: auto;
+    padding: 20px;
+    border: 1px solid #000;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    margin-left: 40px;
+}
+div#balloon:before {
+    content: "";
+    display: inline-block;
+    border: 10px solid transparent;
+    border-right-color: #000;
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    margin-top: -9px;
+}
+div#balloon:after {
+    content: "";
+    display: inline-block;
+    border: 9px solid transparent;
+    border-right-color: #fff;
+    position: absolute;
+    left: -18px;
+    top: 50%;
+    margin-top: -8px;
+}
+
+div#balloon1{
+    float: right;
+    width: 500px;
+    height: auto;
+    padding: 20px;
+    background: #fff;
+    dispay: inline-block;
+    position: relative;
+    border: 1px solid #000;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+div#balloon1:before {
+    content: "";
+    display: inline-block;
+    border: 10px solid transparent;
+    border-left-color: #000;
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    margin-top: -9px;
+}
+div#balloon1:after {
+    content: "";
+    display: inline-block;
+    border: 9px solid transparent;
+    border-left-color: #fff;
+    position: absolute;
+    right: -18px;
+    top: 50%;
+    margin-top: -8px;
+}
