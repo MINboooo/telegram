@@ -1,0 +1,46 @@
+<div class="container message">
+  <div class="wrapper col-md-8 col-md-offset-2 col-sm-10 message-index">
+
+    <p class="message-user-name"><%= @conversation.target_user(current_user).name %>さんとのメッセージ</p>
+
+    <% if @over_ten %>
+      <center><%= link_to '以前のメッセージをすべて表示', '?m=all' %></center>
+    <% end %>
+
+    <div class="ui segment">
+      <% @messages.each do |message| %>
+        <% if message.user_id == current_user.id %>
+          <!-- 自分のメッセージ -->
+          <div class="item-right">
+            <% user = User.find(message.user_id) %>
+            <div id="balloon1">
+              <%= message.body %>
+            </div><br>
+            <div class="clear"></div>
+            <p><%= message.message_time %></p>
+          </div>
+          <br>
+        <% else %>
+          <!-- 相手のメッセージ -->
+          <div class="item-left">
+            <% user = User.find_by(id: message.user_id) %>
+            <%= profile_img(message.user) %>
+            <div id="balloon">
+              <%= message.body %>
+            </div>
+            <p><%= message.message_time %></p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+
+    <!-- メッセージの送信 -->
+    <%= form_for [@conversation, @message], html: {class: "ui reply form"} do |f| %>
+      <div class="message-field">
+        <%= f.text_area :body, class: "form-control input-mysize" %>
+        <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
+        <%= f.submit "メッセージを送る" %>
+      </div>
+    <% end %>
+  </div>
+</div>

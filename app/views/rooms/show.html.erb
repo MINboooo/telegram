@@ -1,15 +1,17 @@
 <h1>DM</h1>
 
 <% @entries.each do |e| %>
-  <h5><strong><a href="/users/<%= e.user.id %>"><%= e.user.email%>さん</a></strong></h5>
+  
+    <h5><strong><ul><a href="/users/<%= e.user.id %>"><%= e.user.name%>さん</a></ul></strong></h5>
+  
 <% end %>
 
 <hr>
 <% if @messages.present? %>
   <% @messages.each do |m| %>
     <strong><%= m.content %></strong>
-    <small>by <strong><a href="/users/<%= m.user_id %>"><%= m.user.email %>さん</a></strong></small>
-    <hr>
+    <small>by <i><strong><a href="/users/<%= m.user_id %>"><%= m.user.name %>さん</a></strong></i></small>
+<hr>
   <% end %>
 <% else %>
   <h3 class="text-center">メッセージはまだありません</h3>
