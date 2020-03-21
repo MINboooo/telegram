@@ -1,6 +1,22 @@
 @import '~bootstrap/scss/bootstrap';
 @import "~@fortawesome/fontawesome-free/scss/fontawesome";
 
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+}
+
+#logo:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
 .logo {
   font-family: 'Billabong', cursive;
   font-size: 2rem;
@@ -19,5 +35,5 @@ nav.pagination {
 .user-box {
   padding: 30px;
   border: 1px solid #dcdcdc;
-  background-color: #f8f8ff;
+  background-color: #f8fffc;
 }

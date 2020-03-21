@@ -61,8 +61,8 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.after_initialize do
-    Bullet.enable = true          # Bulletプラグインを有効
-    Bullet.alert = true           # JavaScriptでの通知
+    # Bullet.enable = true          # Bulletプラグインを有効
+    # Bullet.alert = true           # JavaScriptでの通知
 
     # ホワイトリストを指定
     Bullet.add_whitelist type: :n_plus_one_query,         class_name: 'Post',     association: :user
